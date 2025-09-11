@@ -58,6 +58,29 @@ Onde:
 * c = contraste (constante);
 * b = brilho (constante);
 2) **Negativo**
-3) **Binarização**
+3) **Binarização**:
   Em relação à binarização de uma imagem, a mesma se consiste em transformar toda a imagem em apenas dois níveis de cinza (0 e 255), a partir de um certo limiar. No caso, para valores acima deste limiar, os píxeis são transformados no valor máximo e para valores abaixo, são transformados em zero.
-   Para realizar este procedimento, existem algumas maneiras. Pode-se realizar esse processo de forma "manual"
+   Para realizar este procedimento, existem algumas maneiras. Pode-se realizar esse processo de forma "manual", como mostrado abaixo:
+
+  ```python
+import requests 
+
+def plot(imagem, limiar):
+  for i in range(len(img_bin)):
+   for j in range(len(img_bin[0])):
+     if img_bin[i][j] >= limiar:
+       img_bin[i][j] = 255
+     else:
+       img_bin[i][j] = 0
+````
+````
+Ou, pode-se realizar um código com o próprio OpenCV, como demonstrado abaixo:
+```python
+import requests
+
+th_value, img_bin_otsu = cv.threshold(img, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
+plota(img_bin_otsu, 'Imagem Binarizada (Otsu)')
+print(f'O valor encontrado pelo Otsu é: {th_value}')
+```
+
+Um comparativo entre os resultados estão presentes no arquivo [Binarização Manual x Binarização pelo método Otsu (OpenCV)][otsu_x_bin.py]
