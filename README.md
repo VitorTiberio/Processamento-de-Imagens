@@ -1,1 +1,1 @@
-# digital_image_processing
+# Processamento Digital de Imagem - Anotações
