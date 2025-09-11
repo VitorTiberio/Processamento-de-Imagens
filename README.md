@@ -21,6 +21,8 @@ $$
  Vale ressaltar que o histograma não trás informações sobre a posição dos pixels, mas sim, somente a sua distruibuição (é uma função de distribuição de probabilidades). Abaixo, temos alguns exemplos de histogramas: 
 
 ![Exemplo de um Histograma](./images_teoria/histograma_01.png)
-![Exemplo de um Histograma 2](.images_teoria/histograma_02.png)
+![Exemplo de um Histograma 2](./images_teoria/histograma_02.png)
+
+Note que, nos histogramas acima, uma imagem escuta tem uma maior concentração de nível de cinza em n mais baixos e a imagem clara em n mais altos. 
 
 
