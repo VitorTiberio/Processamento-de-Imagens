@@ -72,8 +72,9 @@ def plot(imagem, limiar):
        img_bin[i][j] = 255
      else:
        img_bin[i][j] = 0
-````
+       ```
 Ou, pode-se realizar um código com o próprio OpenCV, como demonstrado abaixo:
+
 ```python
 import requests
 
@@ -81,5 +82,17 @@ th_value, img_bin_otsu = cv.threshold(img, 0, 255, cv.THRESH_BINARY + cv.THRESH_
 plota(img_bin_otsu, 'Imagem Binarizada (Otsu)')
 print(f'O valor encontrado pelo Otsu é: {th_value}')
 ```
+Um comparativo entre os resultados estão presentes no arquivo ![Binarização Manual x Binarização pelo método Otsu (OpenCV)][https://github.com/VitorTiberio/Processamento-de-Imagens/blob/main/otsu_x_bin.py]
 
-Um comparativo entre os resultados estão presentes no arquivo [Binarização Manual x Binarização pelo método Otsu (OpenCV)][https://github.com/VitorTiberio/Processamento-de-Imagens/blob/main/otsu_x_bin.py]
+4) **Alargamento do Constraste**
+   Para aumentarmos o contraste de uma imagem, deve-se pegar o menor valor do histograma (A) e o maior valor do histograma (B) e aplicar a uma imagem de saída. No caso, tem-se:
+
+  ```math
+g(x, y) = \frac{(f(x,y)-A)(L-1)}{(B-A)}
+```
+Um exemplo de aplicação para alargamento de contraste é:
+
+![Exemplo de um Histograma 2](./images_teoria/histograma_04.png)
+
+   
+   
