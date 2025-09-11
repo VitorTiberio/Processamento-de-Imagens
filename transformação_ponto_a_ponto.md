@@ -73,7 +73,6 @@ def plot(imagem, limiar):
      else:
        img_bin[i][j] = 0
 ````
-````
 Ou, pode-se realizar um código com o próprio OpenCV, como demonstrado abaixo:
 ```python
 import requests
@@ -83,4 +82,4 @@ plota(img_bin_otsu, 'Imagem Binarizada (Otsu)')
 print(f'O valor encontrado pelo Otsu é: {th_value}')
 ```
 
-Um comparativo entre os resultados estão presentes no arquivo [Binarização Manual x Binarização pelo método Otsu (OpenCV)][otsu_x_bin.py]
+Um comparativo entre os resultados estão presentes no arquivo [Binarização Manual x Binarização pelo método Otsu (OpenCV)][https://github.com/VitorTiberio/Processamento-de-Imagens/blob/main/otsu_x_bin.py]
