@@ -94,5 +94,29 @@ Um exemplo de aplicação para alargamento de contraste é:
 
 ![Exemplo de um Histograma 2](./images_teoria/histograma_04.png)
 
-   
+## Transformação Não-Linear ## 
+
+Em relação à transformação não-linear, existem duas maneiras para efetuar-se as correções
+
+1) **Transformação Log**:
+   A transformação log é definida por:
+   ```math
+   g(x,y) = Clog[f(x,y) + 1]
+   ```
+   Vale ressaltar que "C" é uma constante. Para determiná-la, é necessaário calcular/encontrar a maior intesidade de entrada possível (píxel) (no caso, no máximo 255). Portando, a constante C é calculada através de:
+     ```math
+   C = \frac{255}{log(1 + MaxInput)})
+   ``` 
+3) **Transformação Gamma**:
+   Em relação à transformação Gamma, a mesma é definida pela expressão:
+
+   ```math
+   g(x,y) = C.f(x,y)^{(gamma)}
+   ```
+
+   A constante C é calculada através da seguinte expressão:
+
+   ```math
+   C = 255/((255)^{(gamma)}
+   ```
    
