@@ -111,12 +111,12 @@ Em relação à transformação não-linear, existem duas maneiras para efetuar-
    Em relação à transformação Gamma, a mesma é definida pela expressão:
 
    ```math
-   g(x,y) = C.f(x,y)^{(gamma)}
+   g(x,y) = C.f(x,y)^{gamma}
    ```
 
    A constante C é calculada através da seguinte expressão:
 
    ```math
-   C = 255/((255)^{(gamma)}
+   C = 255/255^{gamma}
    ```
    
