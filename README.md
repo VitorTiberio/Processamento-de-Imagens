@@ -23,6 +23,6 @@ $$
 ![Exemplo de um Histograma](./images_teoria/histograma_01.png)
 ![Exemplo de um Histograma 2](./images_teoria/histograma_02.png)
 
-Note que, nos histogramas acima, uma imagem escuta tem uma maior concentração de nível de cinza em n mais baixos e a imagem clara em n mais altos. 
+Note que, nos histogramas acima, uma imagem escura tem uma maior concentração de nível de cinza em n mais baixos e a imagem clara em n mais altos. Com o conhecimento dos histogramas, podemos definir algo muito importante para o processamento de imagens que é o *Contraste*. No caso, o contraste se consiste na diferença entre níveis de cinza entre regiões. Logo, quando aumentamos o contraste de uma imagem, o histograma da mesma é mais preenchido (horizontalmente). 
 
 
