@@ -1,0 +1,1 @@
+# Transformação por Vizinhança #
