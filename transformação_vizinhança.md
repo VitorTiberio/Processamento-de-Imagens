@@ -78,6 +78,12 @@ kernel = np.array(((0,1,0),
 
 ## Máscaras Isotrópicas ## 
 
+---
+## 📚 Referências ##
+
+Material adaptado da disciplina SEL0449 & SEL5895 – Introdução ao Processamento Digital de Imagens,
+Prof. Dr. Marcelo Andrade da Costa Vieira (EESC/USP).
+
 
 
 
