@@ -19,11 +19,60 @@ $$f(x) * h(x) = \int_{-\infty}^{+\infty} f(m)h(x - m)dm$$
 
 $$f(x) \star h(x) = \int_{-\infty}^{+\infty} f(m)h(x + m)dm$$
 
-## Filtros no Domínio do Espaço ##
+---
 
-## Filtragem Espacial - Passa Baixa ## 
+## 🎨 Filtros Espaciais
 
-## Filtragem Espacial - Passa Alta ##
+Os filtros atuam no **domínio do espaço** (a própria imagem), modificando características de frequência:  
+- **Baixa frequência** → regiões homogêneas (suavização).  
+- **Alta frequência** → bordas, detalhes e ruídos.  
+
+--- 
+
+## ⬇️ Filtros Passa-Baixa (Low-Pass)
+
+### Objetivo:
+- Suavizar a imagem.  
+- Reduzir ruído.  
+- Atenuar detalhes finos (altas frequências).  
+
+### Características:
+- Kernel com valores **positivos**.  
+- Soma dos pesos = **1**.
+
+### Exemplos de Kernels:
+
+```python
+kernel = np.array(((1, 1, 1),
+                    (1, 1, 1),
+                    (1, 1, 1))) / 9
+
+kernel = np.array(((0, 1, 0),
+                    (1, 1, 1),
+                    (0, 1, 0))) / 5
+
+kernel = np.array(((1, 3, 1),
+                    (3, 16, 3),
+                    (1, 3, 1))) / 32
+
+kernel = np.array(((0,1,0),
+                  (1,4,1),
+                  (0,1,0))) / 8
+
+```
+---
+
+## ⬆️ Filtros Passa-Alta (High-Pass)
+
+### Objetivo:
+- Destacar **bordas, linhas e detalhes finos**.  
+- Aumentar a nitidez (sharpening).  
+
+### Características:
+- Kernel com valores **positivos e negativos**.  
+- Soma dos pesos = **0**.  
+
+### Exemplos de Kernels:
 
 ## Aplicação de Filtros passa-alta para aumento da nitidez (aguçamento) de imagens ## 
 
