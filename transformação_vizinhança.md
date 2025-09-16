@@ -24,7 +24,7 @@ $$f(x) \star h(x) = \int_{-\infty}^{+\infty} f(m)h(x + m)dm$$
 ## 🎨 Filtros Espaciais
 
 Os filtros atuam no **domínio do espaço** (a própria imagem), modificando características de frequência:  
-- **Baixa frequência** → regiões homogêneas (suavização).  
+- **Baixa frequência** → regiões homogêneas (suavização).
 - **Alta frequência** → bordas, detalhes e ruídos.  
 
 --- 
