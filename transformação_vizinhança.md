@@ -70,9 +70,22 @@ kernel = np.array(((0,1,0),
 
 ### Características:
 - Kernel com valores **positivos e negativos**.  
-- Soma dos pesos = **0**.  
+- Soma dos pesos = **0**.
+- Deve-se normalizar a matriz para que a imagem não "estoure" (passe de 255, provocando a perda de informação). Nesse tipo de filtro, a normalização ocorre com a diferença de contraste do filtro. No caso do primeiro exemplo abaixo, temos uma normalização de 1/9, pois: 8-(-1) = 8 + 1 = 9.
 
 ### Exemplos de Kernels:
+```python
+kernel = np.array(((-1, -1, -1),
+                    (-1, 8, -1),
+                    (-1, -1, -1))) / 9
+
+kernel = np.array(((0, -1, 0),
+                    (-1, 4, -1),
+                    (0, -1, 0))) / 5
+
+```
+
+---
 
 ## Aplicação de Filtros passa-alta para aumento da nitidez (aguçamento) de imagens ## 
 
