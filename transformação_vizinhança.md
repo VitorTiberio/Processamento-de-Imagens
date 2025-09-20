@@ -89,8 +89,45 @@ kernel = np.array(((0, -1, 0),
 
 ## Aplicação de Filtros passa-alta para aumento da nitidez (aguçamento) de imagens ## 
 
+Em relação aos filtros de aguçamento de imagens (ou filtro de sharpenning), os mesmos são filtros para o aumento da nitidez da imagem. Ao invés de ter de fazer o processo de passar um filtro passa alta na imagem, pegar o resultado dessa operação e depois somar com a imagem original (para obter a imagem com realce), é possível realizar esse processo de maneira direta. Para isso, precisamos aplicar a propriedade de convolução: 
+
+$$ g(x,y) = f(x,y) + f(x,y)*h(x,y) $$
+
+Onde h(x,y) é o filtro passa alta. Para ganharmos uma "vantagem" computacional, podemos aplicar a propriedade de convolução, obtendo: 
+
+$$ g(x,y) = f(x,y)*h_1(x,y) + f(x,y)*h_2(x,y) $$
+$$ g(x,y) = f(x,y) (h_1(x,y) + h_2(x,y)) $$
+
+No caso, h_1(x,y) é um kernel que não faz nada sobre a imagem (ou seja, a mesma imagem que entra é a mesma imagem que sai), enquanto h_2(x,y) é um kernel de um filtro passa alta. 
+
+Um exemplo seria as matrizes: 
+```python
+kernel-alta_frequencia = np.array(((-1, -1, -1),
+                    (-1, 8, -1),
+                    (-1, -1, -1))) / 9
+
+kernel_faz_nada = np.array(((0, -1, 0),
+                    (-1, 4, -1),
+                    (0, -1, 0))) / 5
+
+kernel_mascara_nitidez = np.array(((-1, -1, -1),
+                    (-1, 17, -1),
+                    (-1, -1, -1))) / 9
+
+```
+No exemplo, o "kernel_mascara_nitidez = kernel_faz_nada + kernel_alta_frequencia". 
+
+---
+
 ## Máscaras Isotrópicas ## 
 
+Em relação à máscara isotrópica, é quando a mesma realiza uma transformação na imagem "igual" em todas as direções, como mostra o exemplo abaixo:
+```python
+mascara_isotrpica = np.array(((-1, -1, -1),
+                    (-1, 8, -1),
+                    (-1, -1, -1)))
+
+```
 ---
 ## 📚 Referências ##
 
