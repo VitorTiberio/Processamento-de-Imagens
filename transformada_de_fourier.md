@@ -7,8 +7,8 @@ Ela permite analisar uma função (ou imagem) no **domínio da frequência**, de
 
 ## Conceitos Básicos
 
-- Uma imagem pode ser vista como uma função bidimensional no **domínio espacial** *(x, y)*.  
-- A Transformada de Fourier mapeia essa função para o **domínio da frequência** *(u, v)*.  
+- Uma imagem pode ser vista como uma função bidimensional no **domínio espacial** *(x, y)*;  
+- A Transformada de Fourier mapeia essa função para o **domínio da frequência** *(u, v)*;  
 - O resultado é uma representação em que cada ponto do espectro indica **quanto de uma determinada frequência** está presente na imagem.
 
 ### Definições
