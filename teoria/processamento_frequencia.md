@@ -13,3 +13,17 @@ O filtro passa-baixa retira (ou atenua) as ondas senoidas de alta frequência es
 >Não há aumento da amplitude de nenhuma onda senoidal no espectro de Fourier da Imagem.
 
 Os filtros passa-baixa podem ser de vários tipos. Entre eles, podemos citar os filtros: Ideal, Butterworth e Gaussiano. 
+
+## Filtro Passa-Baixa Ideal ## 
+
+Definimos o filtro Passa-Baixa Ideal como: 
+
+$$
+H(u,v) =
+\begin{cases}
+1, & \text{se } D(u,v) \le D_0 \\
+0, & \text{se } D(u,v) > D_0
+\end{cases}
+$$
+
+Neste caso, todas as ondas senoidas de frequência acima da frequência de corte ($D_0$) são retiradas da imagem, enquanto as ondas de frequência mais baixas que $D_0$ não são alteradas. 
