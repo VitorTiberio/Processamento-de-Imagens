@@ -9,7 +9,7 @@ Em relação às transformações por Vizinhança, iremos trabalhar com três ti
 
 Antes de tratarmos especificamente sobre cada tipo de transformação por vizinhança, vamos entender do que a mesma se trata. Então um operador local (por vizinhança) combina a intensidade de um certo número de pixels para computar o valor da nova intensidade da Imagem de Saída, como demonstra a imagem abaixo: 
 
-![Definição de Operador Local](./images_teoria/def_transf_vizinhanca.png)
+![Definição de Operador Local](/images_teoria/def_transf_vizinhanca.png)
 
 Onde T[f(x,y)] é a operação sobre todos os píxels dentro da janela S centrada em f(x,y). 
 
