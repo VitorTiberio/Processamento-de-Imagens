@@ -27,3 +27,28 @@ H(u,v) =
 $$
 
 Neste caso, todas as ondas senoidas de frequência acima da frequência de corte ($D_0$) são retiradas da imagem, enquanto as ondas de frequência mais baixas que $D_0$ não são alteradas. 
+
+## Filtro Passa-Baixa Butterworth ## 
+
+O filtro passa-baixa de Butterworth é definido por: 
+
+$$
+H(u,v) = \frac{1}{1 + \left[ \frac{D(u,v)}{D_0} \right]^{2n}}
+$$
+
+No caso, a frequência de corte $D_0$ define o valor onde a amplitude da onda é reduzida em 50%. Vale ressaltar também que as ondas de alta-frequência são cada vez mais atenuadas na imagem a medida que são maiores que $D_0$, ou seja, o filtro possui uma transição mais suave que o filtro ideal. 
+
+O valor de **n** determina a suavidade do filtro. 
+
+## Filtro Passa-Baixa Gaussiano ## 
+
+Define-se o filtro Passa-Baixa Gaussiano com a seguinte expressão: 
+
+$$
+H(u,v) = e^{-\frac{[D(u,v)]^2}{2D_0^2}}
+$$
+
+Nele, a frequência de corte ($D_0$) define o valor onde a amplitude da onda é reduzida em 60,7%. Como o Butterworh, as ondas de alta-frequência são cada vez mais atenuadas na imagem, a medida que são maiores que a frequência de corte, ou seja, esse filtro possui transição mais suave que o ideial (e tende a ser bem mais suave que o Butterworth também). 
+
+
+
