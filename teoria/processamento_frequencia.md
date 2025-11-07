@@ -5,7 +5,7 @@
 
 O filtro H(u,v) deve multiplicar a matriz complexa F(u,v) para garantir que a fase não seja alterada no processo de filtragem. Esse tipo de filtro é chamado de *zero-phase shift filters* 
 
-# Filtos Passa-Baixa # 
+# 📕 Filtos Passa-Baixa 📕 # 
 
 O filtro passa-baixa retira (ou atenua) as ondas senoidas de alta frequência espacial (acima da frequência de corte $D_0$, definida na construção do filtro). Logo, será mantido somente as ondas senoidas de baixa-frequência espacial, ou sejam que estão abaixo da frequência de corte pré definida. 
 
@@ -50,7 +50,7 @@ $$
 
 Nele, a frequência de corte ($D_0$) define o valor onde a amplitude da onda é reduzida em 60,7%. Como o Butterworh, as ondas de alta-frequência são cada vez mais atenuadas na imagem, a medida que são maiores que a frequência de corte, ou seja, esse filtro possui transição mais suave que o ideial (e tende a ser bem mais suave que o Butterworth também). 
 
-# Filtro Passa-Alta # 
+# 📕 Filtro Passa-Alta 📕 # 
 
 O filtro passa-alta retira (ou atenua) as ondas senoidas de baixa frequência espacial (abaixo da frequência de corte $D_0$, definida na construção do filtro). Logo, será mantido somente as ondas senoidas de alta-frequência espacial, ou sejam que estão acima da frequência de corte pré definida. 
 
