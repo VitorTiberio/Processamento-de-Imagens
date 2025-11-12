@@ -90,3 +90,17 @@ H(u,v) = 1 - e^{-\frac{[D(u,v)]^2}{2D_0^2}}
 $$
 
 A frequência de corte define o valor onde a amplitude da onda senoidal é reduzida em 60,7%. As ondas de baixa frequência são cada vez mais atenuadas na imagem a medida que são menores que $D_0$, ou seja, o filtro possui, assim como o filtro de Butterworth, uma transição mais suave que o filtro ideal. Vale ressaltar que o filtro Gaussiano pode ser bem mais suave que o filtro Butterworth. 
+
+# 📕 Filtros Rejeita-Banda 📕 # 
+
+O filtro rejeita banda retira ou atenua as ondas senoidas cujas frequências espaciais estão dentro de uma faixa definida na construção do filtro. Como nos outros tipos de filtros, não ocorre aumento na amplitude de nenhuma onda senoidal do espectro de Fourier. Vale ressaltar que esse tipo de filtro são projetados a partir da combinação de filtros passa-baixa e passa-alta, como já vistos anteriormente. Como eles são uma composição de outros filtros, os modelos mais comuns são filtros: ideais, Butterworth e Gaussiano. 
+
+## Filtro Rejeita-Banda Ideal ## 
+
+No caso, esse filtro é definido pela seguinte equação: 
+
+$$
+
+$$
+
+Neste tipo de filtro, as ondas senoidas cuja frequência espacial pertenece à faixa definida por W (banda) são retiradas da imagem. As ondas cujas frequências são externas à W não são alterados. ($D_0$) corresponde ao centro da banda W, onde o valor do filtro deve ser zero, enquanto $u_1$ e $u_2$ são as frequências de corte do filtro. 
