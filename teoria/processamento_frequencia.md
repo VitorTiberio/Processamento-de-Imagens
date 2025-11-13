@@ -113,6 +113,6 @@ $$
 Neste tipo de filtro, as ondas senoidas cuja frequência espacial pertenece à faixa definida por W (banda) são retiradas da imagem. As ondas cujas frequências são externas à W não são alterados. ($D_0$) corresponde ao centro da banda W, onde o valor do filtro deve ser zero, enquanto $u_1$ e $u_2$ são as frequências de corte do filtro. 
 
 <p align="center">
-  <img src="images_teoria/filtros/filtro_rejeita_banda_ideal_1.png" width="500">
-  <img src="images_teoria/filtros/filtro_rejeita_banda_ideal_2.png" width="500">
+  <img src="imagens_filtros/filtro_rejeita_banda_ideal_1.png" width="550">
+  <img src="imagens_filtros/filtro_rejeita_banda_ideal_2.png" width="200">
 </p>
