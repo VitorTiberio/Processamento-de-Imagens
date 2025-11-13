@@ -149,3 +149,20 @@ A representação "gráfica" do filtro é demonstrada abaixo:
   <img src="imagens_filtros/filtro_rejeita_banda_gauss_2.png" width="200">
 </p>
 
+# 📕 Filtro Passa-Banda 📕 # 
+
+No caso do filtro de passa-banda, eles irão retirar (ou atenuar) as ondas senoidais cujas frequências espaciais estão fora de uma faixa (banda) definida na construção do filtro. Logo, será mantido apenas as ondas senoidais cujas frequências espaciais estão dentro da banda definida. 
+
+
+>[!CAUTION]
+> Não ocorre um aumento na amplitude de nenhuma onda senoidal do espectro de Fourier da Imagem.
+
+
+Esse tipo de filtro é desenvolvido a partir da combinação de filtros passa-baixa e passa-alta, podendo ser de vários tipos, como já foi citado anteriormente. De maneira resumida, podemos definir as equações dos filtros de passa banda como a "negação lógica" dos filtros de rejeita banda, no caso, podemos relacionar ambas através da seguinte equação:
+
+$$ 
+H(u,v)_{PB} = 1 - H(u,v)_{RB}
+$$
+
+A única mudança é em relação ao valor de $D_0$, no qual, define o valor onde a amplitude do filtro é 1. 
+
