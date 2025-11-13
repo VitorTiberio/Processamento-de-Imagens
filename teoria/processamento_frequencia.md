@@ -116,3 +116,24 @@ Neste tipo de filtro, as ondas senoidas cuja frequência espacial pertenece à f
   <img src="imagens_filtros/filtro_rejeita_banda_ideal_1.png" width="550">
   <img src="imagens_filtros/filtro_rejeita_banda_ideal_2.png" width="200">
 </p>
+
+## Filtro Rejeita-Banda Butterworth ## 
+
+Este tipo de filtro é definido pela seguinte equação: 
+
+$$
+H(u, v) = \frac{1}{1 + \left[ \frac{D(u, v) \cdot W}{D(u, v)^2 - D_0^2} \right]^{2n}}
+$$
+
+No caso, o centro da banda $D_0$ define o valor onda a amplitude do filtro é zero. Semelhantemente ao caso anterior, as frequências de corte $u_1$ e $u_2$ definem os valores onde a amplitude da onda senoidal é reduzida em 50%. As ondas senoidais de frequência espacial dentro da faixa definida são cada vez mais atenuadas na imagem a medida que se aproximam de $D_0$, ou seja, o filtro possui uma transição mais suave que o filtro ideal. Como já visto anteriormente, o índice **n** determina a suavidade do filtro. 
+
+## Filtro Rejeita-Banda Gaussiano ## 
+
+Assim como no caso anterior, o centro da banda ($D_0$) define o valor onde a amplitude do filtro é zero, assim como as frequências de corte definem os valores onde a amplitude da onda senoidal é reduzida em 60,7%. As ondas senoidais de frequência espacial dentro da faixa definida são cada vez mais atenuadas na imagem a medida que se aproximam de $D_0$, ou seja, o filtro possui uma transição mais suave que o filtro ideal. Vale destacar que o filtro Gaussiano pode ser bem mais suave que o filtro Butterworth. 
+
+Define-se o filtro Gaussiano pela seguinte expressão abaixo: 
+
+$$
+H(u, v) = 1 - e^{-\left[ \frac{D(u, v)^2 - D_0^2}{D(u, v) \cdot W} \right]^2}
+$$
+
