@@ -20,7 +20,13 @@ img = cv.imread('tiberio.png', -1)
 
 ## 2. Como realizar o plot de uma imagem ? ## 
 
+Para realizar o plot de uma imagem, utiliza-se a biblioteca do matplotlib. 
+
 ```python
+## Importando as Bibliotecas ##
+
+import matplotlib.pyplot as plt
+import cv2 as cv
 
 ## Definindo as Funções ##
 
