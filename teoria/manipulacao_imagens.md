@@ -46,3 +46,39 @@ titulo = título do plot.
 img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED)
 plota_imagem(img, "Imagem do Tibério")
 ```
+
+## 3. Como extrair as dimensões de uma imagem ? ## 
+
+Para encontrar as dimensões de uma imagem, utilizamos a função ".shape". Uma possível maneira de implementá-la é: 
+
+```python
+M, N = img.shape
+```
+
+No caso, o valor de M recebe uma dimensão (no eixo x) e o N a outra (no eixo y). Podemos adicionar esse resultado dentro do título no plot, se necessário. Isso pode ser implementado da seguinte forma: 
+
+```python
+## Importando as Bibliotecas ##
+
+import matplotlib.pyplot as plt
+import cv2 as cv
+
+## Definindo as Funções ##
+
+def plota_imagem(img, titulo, M, N):
+'''
+Função que plota uma imagem. Recebe como parâmetros:
+img = imagem a ser plotada;
+titulo = título do plot.
+'''
+  plt.figure(figsize=(5,5))
+  plt.title(f"{titulo} shape({M},{N})")
+  plt.imshow(img, cmap='gray')
+  plt.show()
+
+## Código Principal ##
+
+img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED)
+M, N = img.shape
+plota_imagem(img, "Imagem do Tibério", M, N)
+```
