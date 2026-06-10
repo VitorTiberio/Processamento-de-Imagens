@@ -74,7 +74,7 @@ Essa transformação é frequentemente utilizada para expandir faixas de intensi
 
 
 <p align="center">
-  <img src="images/transformacoes_ponto_a_ponto.png" width="450">
+  <img src="images_teoria/transformacao_log.PNG" width="450">
 </p>
 
 <p align="center">
@@ -107,7 +107,7 @@ onde:
 ### Curvas para Diferentes Valores de Gamma
 
 <p align="center">
-  <img src="images/curvas_gamma.png" width="450">
+  <img src="images_teoria/transformacao_gamma.PNG" width="450">
 </p>
 
 <p align="center">
