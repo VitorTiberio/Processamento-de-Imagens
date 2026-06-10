@@ -12,3 +12,7 @@ Para acessar a teoria sobre:
 ## 📚 Referências ##
 > [!NOTE]
 > * Material adaptado da disciplina SEL0449 - Processamento Digital de Imagens, ministrada pelo Prof. Dr. Marcelo Andrade da Costa Vieira (EESC/USP).
+
+## Extras ## 
+Para acessar algumas dicas de algumas bibliotecas para usar no curso, clique nos Links abaixo:
+- [Numpy](teoria/biblioteca_numpy.md)
