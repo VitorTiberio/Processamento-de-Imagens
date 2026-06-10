@@ -148,7 +148,7 @@ plota_histograma(100, img)
 
 ## 7. Como equalizar o histograma de uma imagem ? ## 
 
-Para realziar a equalização de um histograma, pode-se utilizar a função "cv.equalizeHist". Geralmente isso é feito quando o histograma está muito "empelotado", fazendo com que a distribuição dos níveis de cinza seja mais uniforme. 
+Para realizar a equalização de um histograma, pode-se utilizar a função "cv.equalizeHist". Geralmente isso é feito quando o histograma está muito "empelotado", fazendo com que a distribuição dos níveis de cinza seja mais uniforme. 
 
 Essa técnica pode ser implementada da seguinte maneira: 
 
@@ -168,3 +168,44 @@ img_out = cv.equalizeHist(img)
 plota(img, 'Imagem Original')
 plota(img_out, 'Imagem Equalizada')
 ```
+
+## 8. Binarização de Imagens ## 
+
+Em relação a binarização, existe algumas formas na qual ela pode ser implementada. O primeiro método é através da análise do histograma da imagem, uma vez que através dele, pode-se definir um ponto de threshold para a binarização. Com esse limiar definido, podemos fazer um loop para avaliar todos os valores presentes na imagem e definir se esse valor deve ser substituido por zero (caso fique abaixo do ponto de threshold) ou por um, caso fique acima. Desta maneira, implementamos da seguinte forma: 
+
+```python
+## Importando as Bibliotecas ##
+
+import cv2 as cv
+import numpy as np
+import matplotlib.pyplot as plt
+
+## Definindo as Funções ##
+
+def plota_imagem(img, nome):
+  plt.figure(figsize=(5,5))
+  plt.imshow(imagem, cmap = 'gray', vmin = 0, vmax = 255)
+  plt.show()
+  plt.hist(imagem.flatten(),bins=100,density=False,range=(0,255))
+  plt.show()
+
+## Programa Principal ##
+
+img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED) ## Lê a imagem 
+img = img.astype(np.uint8)
+img_bin = cv.imread('tiberio.png, cv.IMREAD_UNCHANGED) ## Lê a imagem 
+img_bin = img_bin.astype(np.uint8)
+plota(img, 'Imagem Original') ## Plota a imagem original e o seu respectivo histograma
+## Analisando o Hist. obtido, temos que o vale ocorre próximo ao bit n = 140.
+M, N = np.shape(img_bin) ## Pega as dimensões da imagem (M,N)
+limiar = 140 ## define o valor de limiar (definido pelo histograma)
+for i in range M:
+  for j in range N:
+    if img_bin[i][j] >= limiar:
+      img_bin[i][j] = 1
+    else:
+      img_bin[i][j] = 0
+
+plota(img_bin, 'Imagem Binarizada (regular)')
+```
+Note que pelo fato da imagem ser binarizada, a mesma deve assumir valores de 0 ou 1. 
