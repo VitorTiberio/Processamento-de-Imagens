@@ -145,3 +145,26 @@ plota_imagem(img, "Imagem Original") ## função presente em tópico anterior
 plota_histograma(50, img)
 plota_histograma(100, img)
 ```
+
+## 7. Como equalizar o histograma de uma imagem ? ## 
+
+Para realziar a equalização de um histograma, pode-se utilizar a função "cv.equalizeHist". Geralmente isso é feito quando o histograma está muito "empelotado", fazendo com que a distribuição dos níveis de cinza seja mais uniforme. 
+
+Essa técnica pode ser implementada da seguinte maneira: 
+
+```python
+## Definindo as funções ## 
+def plota(imagem, nome):
+  plt.figure(figsize=(5,5))
+  plt.imshow(imagem, cmap = 'gray', vmin = 0, vmax = 255)
+  plt.show()
+  plt.hist(imagem.flatten(),bins=100,density=False,range=(0,255))
+  plt.show()
+
+## Código Principal ## 
+img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED)
+img = img.astype(np.uint8)
+img_out = cv.equalizeHist(img)
+plota(img, 'Imagem Original')
+plota(img_out, 'Imagem Equalizada')
+```
