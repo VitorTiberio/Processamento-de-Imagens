@@ -1,6 +1,4 @@
-# Processamento Digital de Imagem - Anotações
-
-## Métodos de Transformação Ponto a Ponto ## 
+# Métodos de Transformação Ponto a Ponto #
 
 Quando estamos realizando transformações ponto a ponto, algumas informações sobre as imagens são extremamente importantes. Neste tópico, veremos transformaçõs utilizando: 
 
