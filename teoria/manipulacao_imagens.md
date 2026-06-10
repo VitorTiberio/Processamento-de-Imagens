@@ -209,3 +209,9 @@ for i in range M:
 plota(img_bin, 'Imagem Binarizada (regular)')
 ```
 Note que pelo fato da imagem ser binarizada, a mesma deve assumir valores de 0 ou 1. 
+Outra maneira que podemos realizar essa análise (de uma forma MUITO mais simples) é utilizando a função "cv.threshold", através do método Otsu. No caso, sua aplicação seria: 
+```python
+th_value, img_bin_otsu = cv.threshold(img, 0, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
+plota(img_bin_otsu, 'Imagem Binarizada (Otsu)')
+print(f'O valor encontrado pelo Otsu é: {th_value}')
+```
