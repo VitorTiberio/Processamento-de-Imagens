@@ -1,7 +1,7 @@
 # 📘 Discretização de Sistemas 📘 #
 > Este resumo contém informações referentes a processamento de Imagens no Domínio da Frequência. Aqui, teremos o desenvolvimento da teoria de filtros passa alta e baixa, assim como rejeita e passa banda.
 
-# Filtragem sem alteração de fase # 
+## Filtragem sem alteração de fase ## 
 
 O filtro H(u,v) deve multiplicar a matriz complexa F(u,v) para garantir que a fase não seja alterada no processo de filtragem. Esse tipo de filtro é chamado de *zero-phase shift filters* 
 
@@ -166,3 +166,4 @@ $$
 
 A única mudança é em relação ao valor de $D_0$, no qual, define o valor onde a amplitude do filtro é 1. 
 
+# 🐍 Como criar um filtro no domínio da frequência em Python ? 🐍 #
