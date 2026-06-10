@@ -85,3 +85,45 @@ img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED)
 M, N = np.shape(img)
 plota_imagem(img, "Imagem do Tibério", M, N)
 ```
+
+## 4. Exclusão e Inversão de Ordem das Linhas/Colunas da Imagem ## 
+
+IMPLEMENTAR
+
+## 5. Como alterar a resolução espacial de uma imagem ? ## 
+
+Para alterarmos a resolução espacial de uma imagem, deve-se utilizar a função "cv.resize". Uma possível implementação pode ser encontrada no código abaixo: 
+
+```python
+
+## Importando as Bibliotecas ## 
+
+import cv2 as cv
+import matplotlib.pyplot as plt
+import numpy as np
+
+## Definindo as funções ##
+
+def redimensionar(img, largura, altura):
+
+'''
+Função que realiza o redimensionamento da imagem.
+img = imagem que será redimensionada;
+largura e altura = tamanho para a qual a imagem será redimensionada. 
+'''
+
+  img_red = cv.resize(img, (largura, altura))
+  plt.figure(figsize=(5,5))
+  plt.title(f'Imagem de dimensões: {largura}x{altura}')
+  plt.imshow(img_red, 'gray')
+  plt.show()
+
+## Código Principal ##
+
+img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED)
+redimensionar(img,280,280)
+redimensionar(img,200,200)
+redimensionar(img,125,125)
+redimensionar(img,100,100)
+redimensionar(img,50,50)
+```
