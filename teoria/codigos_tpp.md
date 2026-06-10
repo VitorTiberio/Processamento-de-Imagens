@@ -126,3 +126,30 @@ onde:
 
 > [!TIP]
 > Em Processamento Digital de Imagens, a transformação logarítmica aparece frequentemente na visualização da Transformada de Fourier, enquanto a transformação gamma é amplamente utilizada em dispositivos de captura e exibição de imagens.
+
+Portando, aplicando-se ambas as transformações em um código em Python, obtêm-se: 
+```python
+## Definindo as funções ## 
+def plot(imagem, nome):
+  plt.figure(figsize=(5,5))
+  plt.imshow(imagem, cmap = 'gray', vmin = 0, vmax = 255)
+  plt.show()
+  plt.hist(imagem.flatten(), bins = 50, density = False, range = (0,255))
+  plt.show()
+
+## Código Principal ##
+
+img = cv.imread('tiberio.png',cv.IMREAD_UNCHANGED)
+img = img.astype(np.uint8)
+plot(img, 'Imagem Original')
+
+## Definindo as imagens de saídas G, com base nas transformações não lineares:
+A = img.min() ## Menor valor da imagem (nível de cinza)
+B = img.max() ## Maior valor da imagem (nível de cinza)
+c_log = 255 / (np.log10(1.0 + B)) ## Constante C da transformação Log
+c_gamma = 255 / (B**0.25) ## Constante C da transformação Gamma
+G1 = np.uint8(c_log*np.log10(img + 1.0)) ## Define a transformação Log (imagem de saída) 
+G2 = np.uint8(c_gamma*(img**0.25)) ## Define a transformação Gamma (imagem de saída) 
+plot(G1, 'Transformação Log')
+plot(G2, 'Transformação Gamma')
+```
