@@ -49,10 +49,10 @@ plota_imagem(img, "Imagem do Tibério")
 
 ## 3. Como extrair as dimensões de uma imagem ? ## 
 
-Para encontrar as dimensões de uma imagem, utilizamos a função ".shape". Uma possível maneira de implementá-la é: 
+Para encontrar as dimensões de uma imagem, utilizamos a função "np.shape", da biblioteca Numpy. Uma possível maneira de implementá-la é: 
 
 ```python
-M, N = img.shape
+M, N = np.shape(img)
 ```
 
 No caso, o valor de M recebe uma dimensão (no eixo x) e o N a outra (no eixo y). Podemos adicionar esse resultado dentro do título no plot, se necessário. Isso pode ser implementado da seguinte forma: 
