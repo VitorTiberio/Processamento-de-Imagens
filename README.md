@@ -1,6 +1,7 @@
 ## Orientações da divisão de Conteúdos p/ consulta ##
 
 Para acessar a teoria sobre:
+- Aquisição de Imagens Digitais, clique [Aqui](teoria/aquisicao_imagens.md)
 - Transformações Ponto a Ponto, clique [Aqui](teoria/transformação_ponto_a_ponto.md)
 - Transformação por Vizinhança, clique [Aqui](teoria/transformação_vizinhança.md)
 - Transformada de Fourier em Imagens, clique [Aqui](teoria/transformada_de_fourier.md)
