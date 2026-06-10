@@ -21,4 +21,6 @@ Para acessar algumas dicas de algumas bibliotecas para usar no curso e recursos 
 - Introdução à manipulação de imagens utilizando Python, clique [Aqui](teoria/manipulacao_imagens.md)
 - Como realizar a transformação ponto a ponto, no domínio do espaço, utilizando Python, clique [Aqui](teoria/codigos_tpp.md)
 - Como realizar a transformação por vizinhança, no domínio do espaço, utilizando Python, clique [Aqui]
+- Como aplicar a transformada de fourier em imagens, utilizando Python, clique [Aqui]
+- Como processar uma imagem no domínio da frequência (Filtros Ideias, Butterworth e Gaussiano), utilizando Python, clique [Aqui]
 - Introdução ao Processamento de Imagens em MATLAB, clique [Aqui](teoria/matlab.md)
