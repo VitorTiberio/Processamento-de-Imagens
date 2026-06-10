@@ -107,7 +107,7 @@ onde:
 ### Curvas para Diferentes Valores de Gamma
 
 <p align="center">
-  <img src="images_teoria/transformacao_gamma.PNG" width="450">
+  <img src="Processamento-deImagens/images_teoria/transformacao_gamma.PNG" width="450">
 </p>
 
 <p align="center">
