@@ -122,3 +122,6 @@ redimensionar(img,125,125)
 redimensionar(img,100,100)
 redimensionar(img,50,50)
 ```
+
+## 6. Como visualizar o histograma de uma imagem ? ## 
+
