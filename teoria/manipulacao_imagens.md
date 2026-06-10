@@ -62,6 +62,7 @@ No caso, o valor de M recebe uma dimensão (no eixo x) e o N a outra (no eixo y)
 
 import matplotlib.pyplot as plt
 import cv2 as cv
+import numpy as np
 
 ## Definindo as Funções ##
 
@@ -69,7 +70,9 @@ def plota_imagem(img, titulo, M, N):
 '''
 Função que plota uma imagem. Recebe como parâmetros:
 img = imagem a ser plotada;
-titulo = título do plot.
+titulo = título do plot;
+M = tamanho da imagem no eixo x;
+N = tamanho da imagem no eixo y.
 '''
   plt.figure(figsize=(5,5))
   plt.title(f"{titulo} shape({M},{N})")
@@ -79,6 +82,6 @@ titulo = título do plot.
 ## Código Principal ##
 
 img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED)
-M, N = img.shape
+M, N = np.shape(img)
 plota_imagem(img, "Imagem do Tibério", M, N)
 ```
