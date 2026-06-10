@@ -125,3 +125,23 @@ redimensionar(img,50,50)
 
 ## 6. Como visualizar o histograma de uma imagem ? ## 
 
+Para a visualização do histograma de uma imagem, devemos utilizar a função "plt.hist". No caso, a mesma pode ser implementada da seguinte forma: 
+
+```python
+def plota_histograma(bin, img):
+'''
+Função que realiza o plot do histograma de uma imagem.
+img = imagem na qual o histograma será plotado;
+bin = número bin.
+'''
+  plt.hist(img.flatten(),bins=bin,density=False,range=(0,255))
+  plt.show()
+```
+Em um código completo, essa função poderia ser aplicada da seguite forma: 
+```python
+img = cv.imread("paisagem.tif")
+img_cinza = cv.imread("paisagem.tif", cv.IMREAD_UNCHANGED)
+plota_imagem(img, "Imagem Original") ## função presente em tópico anterior
+plota_histograma(50, img)
+plota_histograma(100, img)
+```
