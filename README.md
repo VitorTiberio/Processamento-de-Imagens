@@ -19,4 +19,5 @@ Para acessar a teoria sobre:
 Para acessar algumas dicas de algumas bibliotecas para usar no curso e recursos extras, clique nos Links abaixo:
 - Biblioteca [Numpy](teoria/biblioteca_numpy.md)
 - Introdução à manipulação de imagens utilizando Python, clique [Aqui](teoria/manipulacao_imagens.md)
+- Como realizar a transformação ponto a ponto no domínio do espaço utilizando Python, clique [Aqui](teoria/codigos_tpp.md)
 - Processamento de Imagens em MATLAB, clique [Aqui](teoria/matlab.md)
