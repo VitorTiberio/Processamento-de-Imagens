@@ -125,3 +125,5 @@ Portando, se ambas forem somadas, obtêm-se:
 9      -1  -1  -1]
 ```
 Que no caso, torna-se o kernel de nitidez (ou sharpness). 
+
+Caso queira se aprofundar mais sobre os filtros de alta e baixa frequência, visite [Image Kernels Explorer](https://setosa.io/ev/image-kernels/)
