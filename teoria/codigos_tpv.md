@@ -64,7 +64,64 @@ plota_imagem(g3, 'Saída com Filtro 12x12')
 > Ao trabalhar com filtros convolucionais, é essencial garantir que a imagem a ser filtrada seja de um tipo de variável que contemple números "quebrados" (tipo float). Sendo assim, ao ler a imagem (cv.imread), é necessário converter essa imagem para o tipo "float", utilizando o comando: **img.astype('float')** ou **cv.imread('tiberio.png',cv.IMREAD_UNCHANGED).astype('float')**
 > A imagem de saída (g1,g2 e g3) devem ser convertidas novamente para "uint8" para serem plotadas. Isso pode ser feito assim: g1 = g1.astype('uint8')
 
-
-
-
 ## 2. Filtro Passa  Alta ## 
+
+### 2.1 Aplicações Gerais ###
+
+Em relação à filtragem espacial com um filtro passa alta, assim como no passa baixa, primeiramente precisamos compreender como é a estrutura do filtro. 
+No caso, determinamos que um filtro é passa alta se: 
+* O kernel possui pesos negativos;
+* A soma dos elementos internos deve ser igual a zero.
+
+É importante ressaltar que o filtro passa alta detecta na imagem os detalhes finos e mudanças abruptas de níveis de cinza na imagem. 
+
+Um exemplo de aplicação pode ser consultado abaixo: 
+```python
+def plota_imagem(imagem, nome):
+  plt.figure(figsize=(5,5))
+  plt.imshow(imagem, cmap = 'gray', vmin = 0, vmax = 255)
+  shape = imagem.shape
+  plt.title(f'{nome}. Dimensão: {shape}')
+  plt.show()
+
+## Código Principal ## 
+img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED)
+plota_imagem(img, 'Imagem Original')
+kernel = np.array(((-1, -1, -1),
+                    (-1, 8, -1),
+                    (-1, -1, -1))) / 9
+img_out = cv.filter2D(img, -1, kernel)
+plota_imagem(img_out, 'Imagem com filtro passa alta')
+```
+
+### 2.2 Filtro de Sharpness (Aumento da nitidez da imagem) ###
+
+Uma das aplicações que podemos fazer com o filtro passa alta é o aumento da nitidez das imagens. Isso pode ser aplicado da seguinte maneira: 
+```python
+kernel_nitidez = np.array(((-1, -1, -1),
+                    (-1, 17, -1),
+                    (-1, -1, -1))) / 9
+img_nitida = cv.filter2D(img, -1, kernel_nitidez)
+plota_imagem(img_nitida, 'Imagem com Filtro de Aguçamento')
+```
+Para montar o kernel de nitidez, somou-se o filtro passa alta com a imagem original. Considerando que o filtro passa alta era composto por: 
+
+```text
+1     [-1  -1  -1
+─  ·   -1   8  -1
+9      -1  -1  -1]
+```
+
+Logo, uma matriz que se multiplicarmos a imagem não vai acontecer nada (vai sair a própria imagem) pode ser escrita como:
+```text
+1     [0 0 0
+─  ·   0 9 0
+9      0 0 0]
+```                                                     
+Portando, se ambas forem somadas, obtêm-se:
+```text
+1     [-1  -1  -1
+─  ·   -1   17 -1
+9      -1  -1  -1]
+```
+Que no caso, torna-se o kernel de nitidez (ou sharpness). 
