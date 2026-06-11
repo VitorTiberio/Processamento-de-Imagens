@@ -30,28 +30,41 @@ Podemos resolver esse exercício da seguinte maneira:
 ```python
 ## Definindo as Funções ##
 def cria_kernel(tamanho):
+'''
+Cria um kernel de um filtro passa baixa (filtro da média). Nesse caso, é uma matriz de 1's normalizada.
+tamanho = dimensão do kernel
+'''
   kernel = np.ones((tamanho,tamanho))/(tamanho**2)
   return kernel
 
 def plota_imagem(imagem, nome):
   plt.figure(figsize=(5,5))
   plt.imshow(imagem, cmap = 'gray', vmin = 0, vmax = 255)
-  shape = imagem.shape
-  plt.title(f'{nome}. Dimensão: {shape}')
+  plt.title(nome)
   plt.show()
 
-## Parte 01 ##
-img = cv.imread('coins_noisy.tif', -1)
-img = img.astype('float')
-filtro3 = cria_kernel(3)
-filtro9 = cria_kernel(9)
-filtro12 = cria_kernel(12)
-g1 = cv.filter2D(img, -1, filtro3)
-g2 = cv.filter2D(img, -1, filtro9)
-g3 = cv.filter2D(img, -1, filtro12)
+
+## Código Principal ## 
+img = cv.imread('tiberio.png', cv.IMREAD_UNCHANGED) ## realiza a relitura da imagem
+img = img.astype('float') ## converte a imagem para o tipo "float"
+filtro3 = cria_kernel(3) ## cria o kernel 3x3 
+filtro9 = cria_kernel(9) ## cria o kernel 9x9 
+filtro12 = cria_kernel(12) ## cria o kernel 12x12
+g1 = cv.filter2D(img, -1, filtro3) ## realiza a convolução da imagem com o kernel 3x3
+g2 = cv.filter2D(img, -1, filtro9) ## realiza a convolução da imagem com o kernel 9x9 
+g3 = cv.filter2D(img, -1, filtro12) ## realiza a convolução da imagem com o kernel 12x12
+
+## Plot das Imagens ## 
 plota_imagem(img, 'Imagem Original')
 plota_imagem(g1, 'Saída com Filtro 3x3')
 plota_imagem(g2, 'Saída com Filtro 9x9')
 plota_imagem(g3, 'Saída com Filtro 12x12')
 ```
+> [!WARNING]
+> Ao trabalhar com filtros convolucionais, é essencial garantir que a imagem a ser filtrada seja de um tipo de variável que contemple números "quebrados" (tipo float). Sendo assim, ao ler a imagem (cv.imread), é necessário converter essa imagem para o tipo "float", utilizando o comando: **img.astype('float')** ou **cv.imread('tiberio.png',cv.IMREAD_UNCHANGED).astype('float')**
+> A imagem de saída (g1,g2 e g3) devem ser convertidas novamente para "uint8" para serem plotadas. Isso pode ser feito assim: g1 = g1.astype('uint8')
+
+
+
+
 ## 2. Filtro Passa  Alta ## 
