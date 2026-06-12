@@ -68,4 +68,11 @@ img_v = img_hsv[:,:,2]
 ```
 ---
 
-Agora, 
+Agora, quando queremos converter uma imagem para CMY, o OpenCV não realiza essa conversão diretamente. Devemos nos lembrar que a imagem em CMY é "ao contrário" da imagem RGB. Logo, CMY = 1 - RGB. Portanto, podemos realizar a seguinte manipulação para obter a imagem em CMY: 
+```python
+img_c = 255 - img_r
+img_m = 255 - img_g
+img_y = 255 - img_b
+img_cmy = np.dstack((img_c, img_m, img_y))
+```
+Com a imagem em mãos, pode-se partir para os plots, como feito nos itens anteriores. 
