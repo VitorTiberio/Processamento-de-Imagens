@@ -78,3 +78,49 @@ img_cmy = np.dstack((img_c, img_m, img_y))
 Com a imagem em mãos, pode-se partir para os plots, como feito nos itens anteriores. 
 ---
 ## 2. Filtragem de Imagens Coloridas ## 
+
+Vamos supor que queremos realizar o filtro de uma imagem RGB. No caso, a filtragem não pode ser realizada na imagem em RGB, uma vez que pode ocasionar a mudança de cor nas mesmas. O primeiro passo, SEMPRE, é converter a imagem para HSI, HSV ou HSL, realizando a filtragem sempre no canal acromático (ou seja, no canal I, V ou L). Isso não irá provocar a alteração da cor no processamento. Uma possível implementação pode ser consultada abaixo: 
+```python
+## Carregando a imagem que será processada ##
+img = cv.imread("tiberio.png") ## carrega a imagem ruidosa
+img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)  ## converte a imagem ruidosa de BGR para RGB
+## Filtragem com o ruído gaussiano da imagem original ##
+img_blur = cv.blur(img_rgb, (7,7))
+## Convertendo a imagem para HSV ##
+img_hsv = cv.cvtColor(img_rgb, cv.COLOR_RGB2HSV) ## converte a imagem RGB para HSV
+img_h = img_hsv[:,:,0] ## seleciona o canal H
+img_s = img_hsv[:,:,1] ## seleciona o canal S
+img_v = img_hsv[:,:,2] ## seleciona o canal V
+plt.figure(figsize=(20,60))
+plt.subplot(1,4,1)
+plt.title("Imagem Original em HSV".format(img.shape))
+plt.imshow(img_hsv)
+plt.subplot(1,4,2)
+plt.title("Canal H")
+plt.imshow(img_h, "gray")
+plt.subplot(1,4,3)
+plt.title("Canal S")
+plt.imshow(img_s, "gray")
+plt.subplot(1,4,4)
+plt.title("Canal V")
+plt.imshow(img_v, "gray")
+## Seleção do canal V (acromático) para aplicação do filtro ##
+img_v_blur = cv.blur(img_v, (7,7))
+plt.figure(figsize=(20,60))
+plt.subplot(1,4,1)
+plt.title("Imagem Original do canal V")
+plt.imshow(img_v, "gray")
+plt.subplot(1,4,2)
+plt.title("Imagem filtrada do canal V")
+plt.imshow(img_v_blur, "gray")
+## Item 5 ##
+img_hsv_filtrada = np.dstack((img_h, img_s, img_v_filtrada)) ## substitui o canal V pela imagem filtrada
+img_rgb_final = cv.cvtColor(img_hsv_filtrada, cv.COLOR_HSV2RGB) ## converte a imagem HSV para RGB novamente
+plt.figure(figsize=(20,60))
+plt.subplot(1,4,1)
+plt.title("Imagem Original")
+plt.imshow(img_rgb)
+plt.subplot(1,4,2)
+plt.title("Imagem Filtrada")
+plt.imshow(img_rgb_final)
+```
