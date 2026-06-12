@@ -79,6 +79,7 @@ Com a imagem em mãos, pode-se partir para os plots, como feito nos itens anteri
 ---
 ## 2. Filtragem de Imagens Coloridas ## 
 
+### 2.1 - Filtro Passa Baixa ### 
 Vamos supor que queremos realizar o filtro de uma imagem RGB. No caso, a filtragem não pode ser realizada na imagem em RGB, uma vez que pode ocasionar a mudança de cor nas mesmas. O primeiro passo, SEMPRE, é converter a imagem para HSI, HSV ou HSL, realizando a filtragem sempre no canal acromático (ou seja, no canal I, V ou L). Isso não irá provocar a alteração da cor no processamento. Uma possível implementação pode ser consultada abaixo: 
 ```python
 ## Carregando a imagem que será processada ##
@@ -124,3 +125,5 @@ plt.subplot(1,4,2)
 plt.title("Imagem Filtrada")
 plt.imshow(img_rgb_final)
 ```
+---
+### 2.2 - Filtro passa alta ###
