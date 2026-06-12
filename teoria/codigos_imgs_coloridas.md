@@ -76,3 +76,5 @@ img_y = 255 - img_b
 img_cmy = np.dstack((img_c, img_m, img_y))
 ```
 Com a imagem em mãos, pode-se partir para os plots, como feito nos itens anteriores. 
+---
+## 2. Filtragem de Imagens Coloridas ## 
