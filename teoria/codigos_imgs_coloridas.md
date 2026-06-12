@@ -127,3 +127,83 @@ plt.imshow(img_rgb_final)
 ```
 ---
 ### 2.2 - Filtro passa alta ###
+```python
+#kernel filtro passa-alta
+
+filtro_pa = np.array(((-1,-1,-1),
+                      (-1, 8,-1),
+                      (-1,-1,-1)))
+
+## -- Seu código começa AQUI -- ##
+def plota_imagem(nome, imagem):
+  plt.figure(figsize=(5,5))
+  plt.title(nome)
+  plt.imshow(imagem)
+def plota_imagem_grayscale(nome, imagem):
+  plt.figure(figsize=(5,5))
+  plt.title(nome)
+  plt.imshow(imagem, cmap = 'gray')
+def plota_canais_grayscale(img, nome, canal_1, nome_canal_1, canal_2, nome_canal_2, canal_3, nome_canal_3):
+  plt.figure(figsize=(60,60))
+  plt.subplot(1,4,1)
+  plt.title(nome)
+  plt.imshow(img)
+  plt.subplot(1,4,2)
+  plt.title(nome_canal_1)
+  plt.imshow(canal_1, cmap = 'gray')
+  plt.subplot(1,4,3)
+  plt.title(nome_canal_2)
+  plt.imshow(canal_2, cmap = 'gray')
+  plt.subplot(1,4,4)
+  plt.title(nome_canal_3)
+  plt.imshow(canal_3, cmap = 'gray')
+def plota_histograma(img, bin):
+  plt.figure(figsize=(5,5))
+  plt.hist(img.flatten(),bins=bin,density=False,range=(0,255))
+  plt.show()
+
+img = cv.imread("rgb_stripes.bmp", cv.IMREAD_UNCHANGED) ## le a imagem original
+
+## Transformando a imagem de BGR para RGB e selecionando os canais ## 
+img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+img_r = img_rgb[:,:,0]
+img_g = img_rgb[:,:,1]
+img_b = img_rgb[:,:,2]
+plota_canais_grayscale(img_rgb, "Imagem Original", img_r, "Imagem do canal R", img_g, "Imagem do canal G", img_b, "Imagem do canal B")
+
+## Convertendo a imagem RGB para HSV ## 
+img_hsv = cv.cvtColor(img_rgb, cv.COLOR_RGB2HSV)
+img_h = img_hsv[:,:,0]
+img_s = img_hsv[:,:,1]
+img_v = img_hsv[:,:,2]
+plota_canais_grayscale(img_hsv, "Imagem HSV", img_h, "Imagem do canal H", img_s, "Imagem do canal S", img_v, "Imagem do canal V")
+
+'''
+O canal escolhido para aplicação do filtro passa alta é o canal H
+'''
+img_h_filtrada = cv.filter2D(img_h, -1, filtro_pa)
+plota_imagem_grayscale("Imagem do canal H filtrada", img_h_filtrada)
+plota_histograma(img_h_filtrada, 256)
+'''
+Um possível threshold é o 100
+'''
+threshold = 100
+img_h_pa_bin = np.where(img_h_filtrada > threshold, 255, 0)
+plt.figure(figsize=(5,5))
+plt.title('Plota a imagem binarizada')
+plt.imshow(img_h_pa_bin, "gray")
+## Item 5 e 6##
+img_h_pa_bin_mask = cv.bitwise_not(img_h_pa_bin)
+img_hsv[:,:,2] = img_h_pa_bin_mask
+img_rgb = cv.cvtColor(img_hsv, cv.COLOR_HSV2RGB)
+plt.figure(figsize=(5,5))
+plt.title('Plota a imagem final, com destaque nas bordas')
+plt.imshow(img_rgb)
+'''
+O filtro que aplicamos em H para detectar as bordas tem que ser aplicado no canal V, uma vez que se for aplicada em outro canal, ocorrerá uma mudança na cor da imagem
+'''
+## -- Seu código termina AQUI -- ##
+
+
+## -- Seu código termina AQUI -- ##
+```
