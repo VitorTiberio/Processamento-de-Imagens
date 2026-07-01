@@ -187,6 +187,50 @@ plota_imagem(img, "Imagem Original") ## Plota a Imagem Original
 plota_imagem(magnitude, "Espectro de Frequência") ## Plota a Imagem no domínio da frequência
 ```
 
+--- 
+
+### Implementação do Filtro Passa Baixa Ideal ### 
+
+Considerando um filtro que possui uma frequência de corte igual a 1,5 ciclos/mm, temos: 
+
+```python
+def passa_baixa_ideal(Mf, Nf, fshift, fcorte):
+  '''
+  Função que realiza a filtragem da Imagem Original com um Filtro Passa Baixa Ideal.
+  A Saída dessa função é a imagem filtrada e o filtro utilizado.
+  Mf, Nf = dimensões da imagem pós padding;
+  fshift = transformada de fourier da imagem original;
+  fcorte = frequência de corte a ser colocada no filtro.
+  '''
+  cx = Nf//2
+  cy = Mf//2
+  D0 = fcorte
+  filtro = np.zeros((Mf,Nf))
+  for i in range(Mf):
+    for j in range(Nf):
+      if np.sqrt((i-cx)**2 + (j-cy)**2) <= D0:
+        filtro[i,j] = 1
+      else:
+        filtro[i,j] = 0
+  fshift_filtrado = fshift*filtro
+  f_ishift = np.fft.ifftshift(fshift_filtrado)
+  img_back = np.fft.ifft2(f_ishift)
+  img_back = np.abs(img_back)
+  img_back = img_back[0:(Mf//2), 0:(Nf//2)]
+  return img_back, filtro
+
+## Código Principal ##
+img = cv.imread('towerbridge.tif', cv.IMREAD_UNCHANGED) ## Carrega a imagem "towerbridge.tif"
+Mf, Nf, fshift, magnitude = calcula_transformada_fourier(img) ## Calcula a transformada de Fouerier da Imagem
+plota_imagem(img, "Imagem Original") ## Plota a Imagem Original
+plota_imagem(magnitude, "Espectro de Frequência") ## Plota a Imagem no domínio da frequência
+D0 = calcula_fcorte(3000, 1.5, Mf, Nf) ## Calcula a frequência de corte -- trabalhando nessa função
+fshift_filtrado, filtro_pb_ideal = passa_baixa_ideal(Mf, Nf, fshift, D0) ## aplica o filtro passa baixa ideal no domínio da frequência
+plota_imagem(filtro_pb_ideal, "Filtro Ideal") ## Plota o Filtro Ideal
+plota_imagem(fshift_filtrado, "Imagem Filtrada - Filtro Passa Baixa Ideal") ## Plota a imagem filtrada com o filtro passa baixa ideal
+```
+
+
 
 
 
