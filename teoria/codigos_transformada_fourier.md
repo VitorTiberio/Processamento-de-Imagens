@@ -57,5 +57,68 @@ $$
 Como as amplitudes do espectro variam em um range muito grande e não equalizado, é necessário ajustar o contraste para que seja possível visualizar em um plot. Por esse motivo, faz-se uma transformação logarítma.
 
 > [!CAUTION]
-> Essa transformação é aplicada apenas para efeito de visualização. **NÃO** aplique a transformada de Fourier inversa na amplitude do sinal! (veremos isso em breve...)
-> Soma-se um valor pequeno, por exemplo "1", às magnitudes encontradas, tal como no exemplo, pois intensidades de valor 0 gerariam erro quando o log fosse calculado.
+> * Essa transformação é aplicada apenas para efeito de visualização. **NÃO** aplique a transformada de Fourier inversa na amplitude do sinal! (veremos isso em breve...)
+> * Soma-se um valor pequeno, por exemplo "1", às magnitudes encontradas, tal como no exemplo, pois intensidades de valor 0 gerariam erro quando o log fosse calculado.
+
+--- 
+
+## Exemplo 01 - Cálculo da Transformada de Fourier de Múltiplas Figuras ## 
+
+Um exemplo prático de um código para calcular a transformada de Fourier de Várias Figuras é: 
+```
+def calcula_fourier(img)):
+  f = np.fft.fft2(img)
+  f_shift = np.fft.fftshift(f)
+  magnitude = 20*np.log(np.abs(f_shift)+1.)
+  return f_shift, magnitude
+
+def plota_imagem(img1, img2, titulo_1, titulo_2):
+  plt.figure(figsize=(10,10))
+  plt.subplot(1,2,1)
+  plt.imshow(img1, cmap='gray')
+  plt.title(titulo_1)
+  plt.subplot(1,2,2)
+  plt.imshow(img2, cmap='gray')
+  plt.title(titulo_2)
+  plt.show()
+
+## --- Carregnado as Imagens --- ##
+circulo = cv.imread('circulo.tif', cv.IMREAD_UNCHANGED)
+faixa_horizontal = cv.imread('faixahorizontal.tif', cv.IMREAD_UNCHANGED)
+faixa_vertical = cv.imread('faixavertical.tif', cv.IMREAD_UNCHANGED)
+losango = cv.imread('losango.tif', cv.IMREAD_UNCHANGED)
+quadrado = cv.imread('quadrado.tif', cv.IMREAD_UNCHANGED)
+retangulo_vertical = cv.imread('retangulovertical.tif', cv.IMREAD_UNCHANGED)
+retangulo_horizontal = cv.imread('retangulohorizontal.tif', cv.IMREAD_UNCHANGED)
+vret_sim = cv.imread('vret_sim.tif', cv.IMREAD_UNCHANGED)
+hret_sim = cv.imread('hret_sim.tif', cv.IMREAD_UNCHANGED)
+parallelogram = cv.imread('parallelogram.tif', cv.IMREAD_UNCHANGED)
+parallelogram_2 = cv.imread('parallelogram_2.tif', cv.IMREAD_UNCHANGED)
+
+## --- Calculando a transformada de Fourier --- ##
+fft_circulo, magnitude_circulo = calcula_fourier(circulo)
+fft_faixa_horizontal = calcula_fourier(faixa_horizontal)
+fft_faixa_vertical = calcula_fourier(faixa_vertical)
+fft_losango = calcula_fourier(losango)
+fft_quadrado = calcula_fourier(quadrado)
+fft_retangulo_vertical = calcula_fourier(retangulo_vertical)
+fft_retangulo_horizontal = calcula_fourier(retangulo_horizontal)
+fft_vret_sim = calcula_fourier(vret_sim)
+fft_hret_sim = calcula_fourier(hret_sim)
+fft_parallelogram = calcula_fourier(parallelogram)
+fft_parallelogram_2 = calcula_fourier(parallelogram_2)
+
+## --- Plotando os resultados --- ##
+plota_imagem(circulo, fft_circulo)
+plota_imagem(faixa_horizontal, fft_faixa_horizontal)
+plota_imagem(faixa_vertical, fft_faixa_vertical)
+plota_imagem(losango, fft_losango)
+plota_imagem(quadrado, fft_quadrado)
+plota_imagem(retangulo_vertical, fft_retangulo_vertical)
+plota_imagem(retangulo_horizontal, fft_retangulo_horizontal)
+plota_imagem(vret_sim, fft_vret_sim)
+plota_imagem(hret_sim, fft_hret_sim)
+plota_imagem(parallelogram, fft_parallelogram)
+plota_imagem(parallelogram_2, fft_parallelogram_2)
+
+```
