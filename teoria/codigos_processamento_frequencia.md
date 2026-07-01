@@ -105,7 +105,7 @@ $$
 Ou seja, 
 
 $$
-\Delta{x} = = 0,08467 mm/pixel
+\Delta{x} = 0,08467 mm/pixel
 $$
 
 Com esse dado, conseguimos calcular a frequência de Nyquist (maior frequência espacial que pode ser representada): 
