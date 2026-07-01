@@ -118,5 +118,33 @@ plota_imagem(vret_sim, magnitude_vret_sim)
 plota_imagem(hret_sim, magnitude_hret_sim)
 plota_imagem(parallelogram, magnitude_parallelogram)
 plota_imagem(parallelogram_2, magnitude_parallelogram_2)
-
 ```
+
+Para resolver esse mesmo exercício de uma maneira muito mais otimizada (sem termos que ficar nesse "hardcoding"), podemos resolvê-lo da seguinte forma: 
+```python
+## Definindo as Funções ## 
+def calcula_fourier(img):
+  f = np.fft.fft2(img)
+  f_shift = np.fft.fftshift(f)
+  magnitude = 20*np.log(np.abs(f_shift)+1.)
+  return f_shift, magnitude
+
+def plota_imagem(img1, img2):
+  plt.figure(figsize=(10,10))
+  plt.subplot(1,2,1)
+  plt.imshow(img1, cmap='gray')
+  plt.subplot(1,2,2)
+  plt.imshow(img2, cmap='gray')
+  plt.show()
+
+## Código Principal ##
+
+imagens = ['circulo.tif', 'faixahorizontal.tif', 'faixavertical.tif', 'losango.tif', 'quadrado.tif', 'retangulovertical.tif', 'retangulohorizontal.tif', 'vret_sim.tif', 'hret_sim.tif', 'parallelogram.tif', 'parallelogram_2.tif']
+
+for imagem in imagens:
+  img = cv.imread(imagem, cv.IMREAD_UNCHANGED)
+  fft, magnitude = calcula_fourier(img)
+  plota_imagem(img, magnitude)
+```
+
+Muito mais simples, né ?
