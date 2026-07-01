@@ -83,3 +83,46 @@ onde:
 
 > [!IMPORTANT]
 > O filtro Gaussiano é amplamente utilizado em Processamento Digital de Imagens devido à sua transição suave e à ausência de oscilações na imagem filtrada.
+
+--- 
+
+## Como determinar a frequência de corte de uma imagem com base em uma digitalização de X DPI ? ## 
+
+Vamos supor que queremos calcular a frequência de corte a partir de uma digitalização realizada, por exemplo, de 300 DPI. O primeiro passo é realizar a conversão da resolução para o tamanho físico de um pixel. 
+
+Sabemos que: 
+
+$$
+1 polegada = 25,4mm
+$$
+
+Logo, para uma resolução de 300 DPI:
+
+$$
+\Delta{x} = \frac{25,4}{300} = 0,08467 mm/pixel
+$$
+
+Ou seja, 
+
+$$
+\Delta{x} = = 0,08467 mm/pixel
+$$
+
+Com esse dado, conseguimos calcular a frequência de Nyquist (maior frequência espacial que pode ser representada): 
+
+$$
+f_{n} = \frac{1}{2\Delta{x}}
+$$
+
+$$
+f_{n} = \frac{1}{2 \times 0,08467}
+$$
+
+
+
+
+
+
+
+
+
