@@ -164,6 +164,28 @@ def calcula_transformada_fourier(img):
   return Mf, Nf, fshift, magnitude_spectrum ## devolve o tamanho Mf, Nf (pós padding), fshift (para cálculo da inversa posteriormente) e o espectro de frequências
 ```
 
+Outra função que usamos bastante é a função de plot das imagens, definida abaixo: 
+```python
+def plota_imagem(img, titulo):
+  '''
+  Função que plota a imagem.
+  img = imagem que receberá o plot;
+  titulo = titulo que será colocado no plot.
+  '''
+  plt.figure(figsize=(5,5))
+  plt.title(titulo)
+  plt.imshow(img, cmap='gray')
+  plt.show()
+```
+
+Um pequeno lembrete de como devemos implementar o código "principal" para calcular a Transformada de Fourier de uma Imagem =) 
+
+```python
+img = cv.imread('towerbridge.tif', cv.IMREAD_UNCHANGED) ## Carrega a imagem "towerbridge.tif"
+Mf, Nf, fshift, magnitude = calcula_transformada_fourier(img) ## calcula a transformada de fourier
+plota_imagem(img, "Imagem Original") ## Plota a Imagem Original
+plota_imagem(magnitude, "Espectro de Frequência") ## Plota a Imagem no domínio da frequência
+```
 
 
 
