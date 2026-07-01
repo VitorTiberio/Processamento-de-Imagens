@@ -11,9 +11,6 @@ Para acessar a teoria sobre:
 - Restauração de Imagens:
     - Ruído, clique [Aqui]
     - PSF, clique [Aqui]
-## 📚 Referências ##
-> [!NOTE]
-> * Material adaptado da disciplina SEL0449 - Processamento Digital de Imagens, ministrada pelo Prof. Dr. Marcelo Andrade da Costa Vieira (EESC/USP).
 
 ## Extras e Códigos ## 
 Para acessar algumas dicas de algumas bibliotecas para usar no curso e recursos extras, clique nos Links abaixo:
@@ -25,3 +22,7 @@ Para acessar algumas dicas de algumas bibliotecas para usar no curso e recursos 
 - Como aplicar a Transformada de Fourier em Imagens, utilizando Python, clique [Aqui](teoria/codigos_transformada_fourier.md)
 - Como processar uma imagem no domínio da frequência (Filtros Ideias, Butterworth e Gaussiano), utilizando Python, clique [Aqui](teoria/codigos_processamento_frequencia.md)
 - Introdução ao Processamento de Imagens em MATLAB, clique [Aqui](teoria/matlab.md)
+
+## 📚 Referências ##
+> [!NOTE]
+> * Material adaptado da disciplina SEL0449 - Processamento Digital de Imagens, ministrada pelo Prof. Dr. Marcelo Andrade da Costa Vieira (EESC/USP).
