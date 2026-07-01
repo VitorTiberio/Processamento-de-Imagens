@@ -65,7 +65,7 @@ Como as amplitudes do espectro variam em um range muito grande e não equalizado
 ## Exemplo 01 - Cálculo da Transformada de Fourier de Múltiplas Figuras ## 
 
 Um exemplo prático de um código para calcular a transformada de Fourier de Várias Figuras é: 
-```
+```python
 def calcula_fourier(img):
   f = np.fft.fft2(img)
   f_shift = np.fft.fftshift(f)
