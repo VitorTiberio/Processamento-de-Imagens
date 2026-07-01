@@ -1,7 +1,7 @@
-# Como realizar a transformada de Fourier utilizando Python ? # 
+# 📘 Como realizar a transformada de Fourier utilizando Python ? 📘 # 
 ---
 
-## Afinal, o que é a transformada de Fourier de uma Imagem ? ## 
+## Afinal, o que é a transformada de Fourier de uma Imagem ? 👀 ## 
 
 A transformada de Fourier de uma função amostrada finita é uma função contínua, periódica e infinita. No domínio da frequência, o espectro se repete em infinitos períodos. O cálculo da transformada é feito em apenas um período.
 
@@ -40,7 +40,7 @@ As componentes do espectro de frequências determinam as amplitudes das senóide
 
 ---
 
-## Introdução à Transformada de Fourier Utilizando Python ## 
+## Introdução à Transformada de Fourier Utilizando Python 😍 ## 
 
 Funções de tranformada de Fourier utilizam algoritmos como Fast Fourier Transform (FFT) para o cálculo. Em python, a biblioteca Numpy fornece uma função pronta para a transformação considerando uma imagem (2D) np.fft.fft2. Também oferece uma função para o deslocamento np.fft.fftshift - deixando o espectro centralizado (menores frequências no centro do espectro). Elas podem ser implementadas da seguinte forma: 
 ```python
@@ -62,7 +62,7 @@ Como as amplitudes do espectro variam em um range muito grande e não equalizado
 
 --- 
 
-## Exemplo 01 - Cálculo da Transformada de Fourier de Múltiplas Figuras ## 
+## 📘 Exemplo 01 - Cálculo da Transformada de Fourier de Múltiplas Figuras 📘 ## 
 
 Um exemplo prático de um código para calcular a transformada de Fourier de Várias Figuras é: 
 ```python
@@ -166,6 +166,7 @@ img = np.abs(np.fft.ifft2(ifshift))
 > Note que a IFFT é aplicada sobre f (uma imagem na frequência) e não sobre o seu espectro de frequência! No espectro, realizamos uma transformação Log! Então, fica esperto(a)! =)
 
 Um exemplo de aplicação para cálculo da IFFT pode ser consultado abaixo: 
+
 ```python
 ## --- Definindo as Funções --- ##
 def caulcula_transformada_fourier(img):
