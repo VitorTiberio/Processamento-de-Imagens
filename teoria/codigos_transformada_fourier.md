@@ -147,4 +147,4 @@ for imagem in imagens:
   plota_imagem(img, magnitude)
 ```
 
-Muito mais simples, né ?
+Muito mais simples, né ? =) 
