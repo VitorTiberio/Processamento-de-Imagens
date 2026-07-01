@@ -191,7 +191,7 @@ plota_imagem(magnitude, "Espectro de Frequência") ## Plota a Imagem no domínio
 
 ### Implementação do Filtro Passa Baixa Ideal ### 
 
-Considerando um filtro que possui uma frequência de corte igual a 1,5 ciclos/mm, temos: 
+Considerando um filtro que possui uma frequência de corte igual a 1,5 ciclos/mm e considerando que a imagem foi digitalizada em 300 DPI, temos: 
 
 ```python
 def passa_baixa_ideal(Mf, Nf, fshift, fcorte):
@@ -224,14 +224,37 @@ img = cv.imread('towerbridge.tif', cv.IMREAD_UNCHANGED) ## Carrega a imagem "tow
 Mf, Nf, fshift, magnitude = calcula_transformada_fourier(img) ## Calcula a transformada de Fouerier da Imagem
 plota_imagem(img, "Imagem Original") ## Plota a Imagem Original
 plota_imagem(magnitude, "Espectro de Frequência") ## Plota a Imagem no domínio da frequência
-D0 = calcula_fcorte(3000, 1.5, Mf, Nf) ## Calcula a frequência de corte -- trabalhando nessa função
+D0 = calcula_fcorte(300, 1.5, Mf, Nf) ## Calcula a frequência de corte -- trabalhando nessa função
 fshift_filtrado, filtro_pb_ideal = passa_baixa_ideal(Mf, Nf, fshift, D0) ## aplica o filtro passa baixa ideal no domínio da frequência
 plota_imagem(filtro_pb_ideal, "Filtro Ideal") ## Plota o Filtro Ideal
 plota_imagem(fshift_filtrado, "Imagem Filtrada - Filtro Passa Baixa Ideal") ## Plota a imagem filtrada com o filtro passa baixa ideal
 ```
 
+### Implementação do Filtro Passa Baixa Butterworth ### 
 
+```python
+def filtragem_frequencia_pb_butterworth(Mf, Nf, fshift, fcorte, ordem):
+  '''
+  Função que realiza a filtragem da Imagem Original com um Filtro Passa Baixa do tipo Butterworth.
+  A Saída dessa função é a imagem filtrada e o filtro utilizado para tal.
+  Mf, Nf = dimensões da imagem pós padding;
+  fshift = transformada de fourier da imagem original;
+  fcorte = frequência de corte a ser colocada no filtro;
+  ordem = ordem do filtro.
+  '''
+  cx = Nf//2 ## calcula o centro na coordenada "x"
+  cy = Mf//2 ## calcula o centro na coordenada "y"
+  D0 = fcorte ## define a frequência de corte (D0)
+  filtro = np.zeros((Mf,Nf)) ## cria um filtro de zeros (matriz preenchida de zeros)
+  for i in range(Mf):
+    for j in range(Nf): ## percorre todos os elementos da matriz
+      D = np.sqrt((i-cx)**2 + (j-cy)**2) ## definição do valor de D(u,v)
+      filtro[i,j] = 1 / (1 + (D/D0)**(2*ordem)) ## definição do filtro de butterworth
 
-
-
-
+  fshift_filtrado = fshift*filtro ## aplica o filtro (multiplicação na frequência é a convolução no tempo)
+  f_ishift = np.fft.ifftshift(fshift_filtrado) ## aplica a IFFT Shift na FFT Shift
+  img_back = np.fft.ifft2(f_ishift) ## aplica a ifft (retorna a imagem p/ o domínio do tempo)
+  img_back = np.abs(img_back) ## pega os valores absolutos
+  img_back = img_back[0:(Mf//2), 0:(Nf//2)] ## recorta a imagem do tamanho original (remove o padding)
+  return img_back, filtro
+```
