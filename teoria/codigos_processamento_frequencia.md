@@ -257,4 +257,17 @@ def filtragem_frequencia_pb_butterworth(Mf, Nf, fshift, fcorte, ordem):
   img_back = np.abs(img_back) ## pega os valores absolutos
   img_back = img_back[0:(Mf//2), 0:(Nf//2)] ## recorta a imagem do tamanho original (remove o padding)
   return img_back, filtro
+
+## Código Principal ##
+
+img = cv.imread('towerbridge.tif', cv.IMREAD_UNCHANGED) ## Carrega a imagem "towerbridge.tif"
+Mf, Nf, fshift, magnitude = calcula_transformada_fourier(img) ## Calcula a transformada de Fouerier da Imagem
+plota_imagem(img, "Imagem Original") ## Plota a Imagem Original
+plota_imagem(magnitude, "Espectro de Frequência") ## Plota a Imagem no domínio da frequência
+D0 = calcula_fcorte(300, 1.5, Mf, Nf) ## Calcula a frequência de corte
+fshift_filtrado, filtro_pb_butterworth = filtragem_frequencia_pb_butterworth(Mf, Nf, fshift, D0, 2)
+plota_imagem(filtro_pb_butterworth, "Filtro Butterworth")
+plota_imagem(fshift_filtrado, "Imagem Filtrada - Filtro Butterworth")
+
 ```
+
