@@ -151,7 +151,7 @@ Muito mais simples, né ? =)
 
 ---
 
-## Como calcular a Transformada Inversa de Fourier ? (IFFT) ## 
+## 🤔 Como calcular a Transformada Inversa de Fourier ? (IFFT) 🤔 ## 
 
 Tibério, beleza, já calculei a transformada de fourier da minha imagem e apliquei algum filtro nela no domínio da frequência. O que eu preciso fazer com o resultado agora ? Precisa obter a imagem no espaço novamente =) 
 
