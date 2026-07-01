@@ -115,11 +115,54 @@ f_{n} = \frac{1}{2\Delta{x}}
 $$
 
 $$
-f_{n} = \frac{1}{2 \times 0,08467}
+f_{n} = \frac{1}{2 \times 0,08467} = 5,91 ciclos/mm
 $$
 
+Agora, imagine uma situação em que você está fazendo um exercício e o enunciado te fala: "utilize uma frequência de corte de 2 ciclos/mm". O que eu faço agora, Tibério ? 
 
+Quando você está nessa situação, devemos aplicá-la da seguinte forma: 
 
+$$
+D_{0} = f_{c} \times (Mf\Delta{x})
+$$
+
+Onde: 
+* fc é a frequência de corte desejada (ciclos/mm);
+* Delta_x é o valor que calculamos anteriormente (25,4/DPI);
+* Mf = tamanho da imagem (ou da imagem com padding) na direção considerada
+
+Uma maneira de calcularmos D0 através do Python é pela função abaixo: 
+
+```python
+def calcula_fcorte(DPI, fc_mm, Mf, Nf):
+  pixels_por_mm = DPI/25.4
+  fc_pixel = fc_mm / pixels_por_mm ## frequencia de corte em ciclos/pixel
+  D0 = (fc_pixel )*min(Mf, Nf)
+  return D0
+```
+
+--- 
+
+# Aplicação dos Filtros em Python # 
+
+Agora, com toda a bagagem teórica que vimos até agora, podemos realizar o processamento das imagens no domínio da frequência. 
+
+Primeiramente, vamos definir uma função "universal", que será responsável por calcular a transformada de fourier (com padding) das nossas imagens. A mesma pode ser consultada abaixo: 
+
+```python
+def calcula_transformada_fourier(img):
+  '''
+  Função que calcula a transformada de Fourier de uma imagem.
+  img = imagem a ser processada.
+  '''
+  M, N = np.shape(img) ## M,N = dimensões da imagem original
+  Mf = 2*M ## dobra as dimensões da imagem original
+  Nf = 2*N
+  f = np.fft.fft2(img,s=(Mf,Nf)) ## calcula a fft considerando o padding
+  fshift = np.fft.fftshift(f) ## faz o shift na fft
+  magnitude_spectrum = 20*np.log(np.abs(fshift)+1.) ## calcula o espectro de frequências (magnitude), para plot
+  return Mf, Nf, fshift, magnitude_spectrum ## devolve o tamanho Mf, Nf (pós padding), fshift (para cálculo da inversa posteriormente) e o espectro de frequências
+```
 
 
 
