@@ -156,3 +156,60 @@ Muito mais simples, né ? =)
 Tibério, beleza, já calculei a transformada de fourier da minha imagem e apliquei algum filtro nela no domínio da frequência. O que eu preciso fazer com o resultado agora ? Precisa obter a imagem no espaço novamente =) 
 
 Para isso, usamos a IFFT! 
+
+É importante frizar que não há perda de informação entre transformações de Fourier, seja no sentido "de ida" (domínio do espaço para frequência) ou no sentido "da volta" (domínio da frequência para o espaço). A biblioteca numpy também fornece funções para a descentralização np.fft.ifftshift e caminho inverso - domínio da frequência para imagem np.fft.ifft2. No processo de transformação, pelo algoritmo utilizado, restam alguns valores complexos (insignificantes), sendo necessário calcular o valor absoluto do resultado da transformada inversa para que seja possível visualizar a imagem. Veja o exemplo a seguir:
+```python
+ifshift = np.fft.ifftshift(f)
+img = np.abs(np.fft.ifft2(ifshift))
+```
+> [!CAUTION]
+> Note que a IFFT é aplicada sobre f (uma imagem na frequência) e não sobre o seu espectro de frequência! No espectro, realizamos uma transformação Log! Então, fica esperto(a)! =)
+
+Um exemplo de aplicação para cálculo da IFFT pode ser consultado abaixo: 
+```python
+## --- Definindo as Funções --- ##
+def caulcula_transformada_fourier(img):
+  f = np.fft.fft2(img)
+  f_shift = np.fft.fftshift(f)
+  mag = 20*np.log(np.abs(f_shift)+1.)
+  return f_shift, mag
+
+def calcula_ifft(img_f):
+  ifshift = np.fft.ifftshift(img_f)
+  img = np.abs(np.fft.ifft2(ifshift))
+  return img
+
+def plota_imagem(img_1, img_2, titulo_1, titulo_2):
+  plt.figure(figsize=(10,10))
+  plt.subplot(1,2,1)
+  plt.imshow(img_1, cmap='gray')
+  plt.title(titulo_1)
+  plt.subplot(1,2,2)
+  plt.imshow(img_2, cmap='gray')
+  plt.title(titulo_2)
+  plt.show()
+
+## --- Código Principal --- ##
+
+img = cv.imread('pirate.tif', cv.IMREAD_UNCHANGED)
+img_inv = 255 - img
+
+## --- Calculando a transformada de Fourier das Imagens --- ##
+
+img_f, mag_original = caulcula_transformada_fourier(img)
+img_inv_f, mag_inv = caulcula_transformada_fourier(img_inv)
+
+## --- Calculando a IFFT --- ##
+
+img_ifft = calcula_ifft(img_f)
+img_inv_ifft = calcula_ifft(img_inv_f)
+
+## --- Plotando as Imagens --- ## 
+plota_imagem(img, img_inv, 'Imagem Original', 'Imagem Invertida')
+## --- Plotando os espectros --- ##
+plota_imagem(img, mag_original, 'Imagem Original', 'Espectro da Imagem Original')
+plota_imagem(img_inv, mag_inv, 'Imagem Invertida', 'Espectro da Imagem Invertida')
+## --- Plotando as Imagens Inversas (vindas da IFFT) --- ## 
+plota_imagem(img, img_ifft, 'Imagem Original', 'Imagem Reconstruída')
+plota_imagem(img_inv, img_inv_ifft, 'Imagem Invertida', 'Imagem Invertida Reconstruída')
+```
