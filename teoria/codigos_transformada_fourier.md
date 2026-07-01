@@ -213,3 +213,5 @@ plota_imagem(img_inv, mag_inv, 'Imagem Invertida', 'Espectro da Imagem Invertida
 plota_imagem(img, img_ifft, 'Imagem Original', 'Imagem Reconstruída')
 plota_imagem(img_inv, img_inv_ifft, 'Imagem Invertida', 'Imagem Invertida Reconstruída')
 ```
+
+Com essa introdução, agora você está apto(a) para realizar o processamento de imagens no domínio da frequência! =)
