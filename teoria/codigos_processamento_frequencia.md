@@ -2,4 +2,15 @@
 ---
 A filtragem no domínio da frequência consiste em modificar a transformada de Fourier de uma imagem e depois calcular a transformada inversa para obter o resultado processado.
 
-O grau de dificuldade na construção dos filtros diminui quando se trabalha no domínio da frequência, entretanto, a proximidade dos períodos na convolução pode causar o erro de wraparound (efeito de borda). Para solucionar esse problema, é necessário fazer um padding na imagem - lembrando que algoritmos DFT tendem a executar mais rapidamente arranjos de tamanho par, ou seja, normalmente se utiliza o dobro das dimensões M e N da imagem.
+O grau de dificuldade na construção dos filtros diminui quando se trabalha no domínio da frequência, entretanto, a proximidade dos períodos na convolução pode causar o erro de wraparound (efeito de borda). Para solucionar esse problema, é necessário fazer um padding na imagem (lembrando que algoritmos DFT tendem a executar mais rapidamente arranjos de tamanho par, ou seja, normalmente se utiliza o dobro das dimensões M e N da imagem). A fim de preservar informações sobre as bordas, normalmente utiliza-se do padding simétrico, e não o padding com zeros. 
+
+Para realizar esse preenchimento, a função np.fft.ff2 oferece, por meio do parâmetro s, a opção de preenchimento (padding), sendo (Mf,Nf) normalmente igual a (2M, 2N) tal que M e N representam as dimensões da imagem, como demonstrado abaixo: 
+
+```python
+f = np.fft.fft2(img,s=(Mf,Nf))
+fshift = np.fft.fftshift(f)
+magnitude_spectrum = 20*np.log(np.abs(fshift)+1.)
+```
+
+>[!CAUTION]
+>Note as novas dimensões do espectro de frequência. Após a transformada inversa, será necessário recortar a imagem, resultando na imagem com as dimensões originais M e N, descartando as informações adjacentes.
