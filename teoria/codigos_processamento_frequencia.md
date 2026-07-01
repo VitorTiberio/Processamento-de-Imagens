@@ -21,4 +21,68 @@ magnitude_spectrum = 20*np.log(np.abs(fshift)+1.)
 
 Bordas e outras transições abruptas de intensidade (como o ruído) em uma imagem contribuem significativamente para o conteúdo de alta frequência de sua transformada de Fourier. Dessa forma, a suavização (borramento) é obtida no domínio da frequência pela atenuação das altas frequências, utilizando o filtros passa-baixa. 
 
-Os filtros podem ser projetados de forma a apresentar transições mais abruptas ou mais suavizadas. Consideraremos apenas os filtros radialmente simétricos (deslocamento de fase zero) sendo D0 o raio a partir da origem e n a ordem do filtro, temos três "modelos" possíveis de filtos. Entre eles: 
+Os filtros podem ser projetados de forma a apresentar transições mais abruptas ou mais suavizadas. Consideraremos apenas os filtros radialmente simétricos (deslocamento de fase zero) sendo D0 o raio a partir da origem e n a ordem do filtro, temos três "modelos" possíveis de filtos. 
+
+---
+
+### 1. Filtro Ideal ###
+
+O filtro ideal possui uma transição abrupta entre a região de passagem e a de rejeição.
+
+$$
+H_{LP_{\text{Ideal}}}(u,v)=
+\begin{cases}
+1, & D(u,v)\le D_0,\\
+0, & D(u,v)>D_0.
+\end{cases}
+$$
+
+onde:
+
+- $D(u,v)$ é a distância entre o ponto $(u,v)$ e o centro do espectro;
+- $D_0$ é a frequência de corte.
+
+> [!NOTE]
+> O filtro ideal produz uma transição instantânea na frequência, podendo gerar o efeito de **ringing (Fenômeno de Gibbs)** na imagem filtrada.
+
+---
+
+### 2. Filtro Passa-Baixa Butterworth ###
+
+O filtro Butterworth apresenta uma transição suave entre a banda de passagem e a banda de rejeição.
+
+$$
+H_{LP_{\text{Butterworth}}}(u,v)
+=
+\frac{1}
+{1+\left(\frac{D(u,v)}{D_0}\right)^{2n}}
+$$
+
+onde:
+
+- $D(u,v)$ é a distância ao centro da frequência;
+- $D_0$ é a frequência de corte;
+- $n$ é a ordem do filtro.
+
+> [!TIP]
+> Quanto maior o valor de $n$, mais a resposta do filtro se aproxima do filtro ideal.
+
+---
+
+### 3. Filtro Passa-Baixa Gaussiano ###
+
+O filtro Gaussiano possui uma resposta completamente suave, eliminando praticamente o efeito de ringing.
+
+$$
+H_{LP_{\text{Gaussiano}}}(u,v)
+=
+e^{-\frac{D^2(u,v)}{2D_0^2}}
+$$
+
+onde:
+
+- $D(u,v)$ é a distância ao centro da frequência;
+- $D_0$ é a frequência de corte.
+
+> [!IMPORTANT]
+> O filtro Gaussiano é amplamente utilizado em Processamento Digital de Imagens devido à sua transição suave e à ausência de oscilações na imagem filtrada.
