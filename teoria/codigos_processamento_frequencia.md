@@ -30,10 +30,10 @@ Os filtros podem ser projetados de forma a apresentar transições mais abruptas
 O filtro ideal possui uma transição abrupta entre a região de passagem e a de rejeição.
 
 $$
-H_{LP_{\text{Ideal}}}(u,v)=
+H_{LP_{\text{Ideal}}}(u,v) =
 \begin{cases}
-1, & D(u,v)\le D_0,\\
-0, & D(u,v)>D_0.
+1, & \text{se } D(u,v) \leq D_0 \\
+0, & \text{se } D(u,v) > D_0
 \end{cases}
 $$
 
@@ -52,10 +52,8 @@ onde:
 O filtro Butterworth apresenta uma transição suave entre a banda de passagem e a banda de rejeição.
 
 $$
-H_{LP_{\text{Butterworth}}}(u,v)
-=
-\frac{1}
-{1+\left(\frac{D(u,v)}{D_0}\right)^{2n}}
+H_{LP_{\text{Butterworth}}}(u,v) =
+\frac{1}{1+\left[\frac{D(u,v)}{D_0}\right]^{2n}}
 $$
 
 onde:
@@ -74,8 +72,7 @@ onde:
 O filtro Gaussiano possui uma resposta completamente suave, eliminando praticamente o efeito de ringing.
 
 $$
-H_{LP_{\text{Gaussiano}}}(u,v)
-=
+H_{LP_{\text{Gaussiano}}}(u,v) =
 e^{-\frac{D^2(u,v)}{2D_0^2}}
 $$
 
